@@ -12,3 +12,5 @@ provided for retrieving Census data and common shapefiles.
 Depends: R (>= 3.2.1)
 License: GPL-2
 LazyData: true
+Imports:
+  rio
