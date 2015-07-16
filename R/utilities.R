@@ -1,17 +1,11 @@
-readURL <- function(url) {
-  out <- tryCatch(readLines(conn = url, warn = FALSE),
-                  error = function(cond) {
-                    message(cond)
-                    message("URL does not exist, returning NA.")
-                    message(url)
-                    return(NA)
-                  },
-                  warning = function(cond) {
-                    message(cond)
-                    message("URL caused a warning, returning NA.")
-                    message(url)
-                    return(NA)
-                  },
-                  finally = message(paste("Processed URL:", url)))
-  return(out)
+retrieveFile <- function(url, dir, ...) {
+  split <- unlist(strsplit(url, "/"))
+  fname <- paste(dir, split[length(split)], sep = "/")
+  if (!file.exists(fname)) {
+    message(paste(fname, "does not exist.  Downloading file..."))
+    dir.create(dir, showWarnings = FALSE)
+    download.file(url, fname)
+  }
+  message(paste("Importing", fname))
+  return(import(fname, ...))
 }
