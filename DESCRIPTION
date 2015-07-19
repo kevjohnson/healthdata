@@ -4,14 +4,15 @@ Version: 0.1
 Authors@R: person("Kevin", "Johnson", email = "kej.johnson@gmail.com",
            role = c("aut", "cre"))
 Description: This package will automatically find health related datasets on
-the Internet and load them into R for you.  All datasets will downloaded into a
-folder called "data" in your working directory.  Datasets will not be
-downloaded again if they already exist in that folder.  Options are available
-for selected variables and subsetting the data before loading.  Functions are
-provided for retrieving Census data and common shapefiles.
+             the Internet and load them into R for you.  All datasets will
+             downloaded into afolder called "data" in your working directory.
+             Datasets will not bedownloaded again if they already exist in that
+             folder.  Options are availablefor selected variables and
+             subsetting the data before loading.  Functions are provided for
+             retrieving Census data and common shapefiles.
 Depends: R (>= 3.2.1)
 License: GPL-2
 LazyData: true
 Imports:
-  rio
+  rio,
   dplyr
