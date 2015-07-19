@@ -9,10 +9,12 @@ getNhanes <- function(years, files, variables, dir) {
     for (f in files) {
       url <- paste("http://wwwn.cdc.gov/Nchs/Nhanes/", y, "-", y+1, "/", f,
                    "_", yearLetters[as.character(y)], ".XPT", sep = "")
-      dataListYear[[j]] <- retrieveFile(url, dir, format = "xpt")
+      data <- retrieveFile(url, dir, format = "xpt")
+      dataListYear[[j]] <- data[,variables[[j]]]
+      print(head(dataListYear[[j]]))
       j <- j + 1
     }
-    dataList[[i]] <- do.call(full_join, dataListYear)
+    dataList[[i]] <- Reduce(dplyr::full_join, dataListYear)
     i <- i + 1
   }
   finalData <- do.call(rbind, dataList)

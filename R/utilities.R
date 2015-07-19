@@ -7,5 +7,5 @@ retrieveFile <- function(url, dir, ...) {
     download.file(url, fname)
   }
   message(paste("Importing", fname))
-  return(import(fname, ...))
+  return(rio::import(fname, ...))
 }
