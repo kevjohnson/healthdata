@@ -30,7 +30,7 @@
 getCensus <- function(survey, year, vars, geo, area = NULL,
                       key = "842879abc12dbd7da277aac4dc1a77c8e0f8778d") {
   vars <- paste(vars, sep = "", collapse = ",")
-  if (area == NULL) {
+  if (is.null(area)) {
     url <- paste("http://api.census.gov/data/", year, "/", survey, "?get=",
                  vars, "&for=", geo, "&key=", key, sep = "")
   } else {
