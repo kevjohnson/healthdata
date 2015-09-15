@@ -29,12 +29,12 @@
 ##' @author Kevin Johnson
 getCensus <- function(survey, year, vars, geo, area = NULL,
                       key = "842879abc12dbd7da277aac4dc1a77c8e0f8778d") {
-  vars <- paste(x, sep = "", collapse = ",")
-  area <- paste(x, sep = "", collapse = "+")
+  vars <- paste(vars, sep = "", collapse = ",")
   if (area == NULL) {
     url <- paste("http://api.census.gov/data/", year, "/", survey, "?get=",
                  vars, "&for=", geo, "&key=", key, sep = "")
   } else {
+    area <- paste(area, sep = "", collapse = "+")
     url <- paste("http://api.census.gov/data/", year, "/", survey, "?get=",
                  vars, "&for=", geo, "&in=", area, "&key=", key, sep = "")
   }
