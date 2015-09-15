@@ -46,7 +46,7 @@ getCensus <- function(survey, year, vars, geo, area = NULL,
   dataDF <- data.frame()
   temp <- strsplit(gsub("[^[:alnum:], _]", "", rawData), "\\,")
   dataDF <- as.data.frame(do.call(rbind, temp[-1]), stringsAsFactors = FALSE)
-  names(dataDF) <- tmp[[1]]
+  names(dataDF) <- temp[[1]]
   numCols <- grep("[0-9]", names(dataDF), value = TRUE)
   for (c in numCols) {
     dataDF[,c] <- as.numeric(as.character(dataDF[,c]))
