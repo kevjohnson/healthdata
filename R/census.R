@@ -38,7 +38,7 @@ getCensus <- function(survey, year, vars, geo, area = NULL,
     url <- paste("http://api.census.gov/data/", year, "/", survey, "?get=",
                  vars, "&for=", geo, "&in=", area, "&key=", key, sep = "")
   }
-  rawData <- try(readLines(url), silent = TRUE)
+  rawData <- try(readLines(url, warn = FALSE), silent = TRUE)
   if (class(rawData) == "try-error") {
     print(url)
     return
